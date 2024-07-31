@@ -457,6 +457,7 @@ return {
         indent = {
           char = "▏",
           tab_char = "▏",
+          -- tab_char = "  ",
           -- highlight = "IndentBlanklineChar",
           -- highlight = highlight,
         },
