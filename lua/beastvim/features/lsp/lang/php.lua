@@ -11,26 +11,32 @@ return {
     run = ":TSUpdate",
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "php", "html"})
+        vim.list_extend(opts.ensure_installed, { "php", "html", "typescript", "tsx", "javascript", "jsx", "vue" })
       end
     end,
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "php", "html"},
+        ensure_installed = {
+          "php",
+          "html",
+          "javascript",
+          "typescript",
+          "tsx",
+          "vue",
+        },
         highlight = {
           enabled = true,
         },
       })
-      local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-        parser_config.blade = {
-            install_info = {
-                url = "https://github.com/EmranMR/tree-sitter-blade",
-                files = { "src/parser.c" },
-                branch = "main",
-            },
-            filetype = "blade",
-        }
-
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config.blade = {
+        install_info = {
+          url = "https://github.com/EmranMR/tree-sitter-blade",
+          files = { "src/parser.c" },
+          branch = "main",
+        },
+        filetype = "blade",
+      }
     end,
   },
   {
@@ -53,6 +59,7 @@ return {
             intelephense = {
               files = {
                 maxSize = 5000000, -- Increase max file size for large projects
+                associations = { "*.php", "*.phtml", "*.module", "*.inc" },
               },
             },
           },
@@ -66,18 +73,40 @@ return {
     "jwalton512/vim-blade",
     ft = "blade",
   },
-  -- Conform.nvim for formatting
-{
-    require('conform').setup {
-        formatters_by_ft = {
-          ["php"] = { "prettier" },
-          ["blade"] = { "blade-formatter" },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        ["php"] = { "prettier" },
+        ["blade"] = { "blade-formatter" },
+        ["javascript"] = { "prettier" },
+        ["javascriptreact"] = { "prettier" },
+        ["typescript"] = { "prettier" },
+        ["typescriptreact"] = { "prettier" },
+        ["vue"] = { "prettier" },
+        ["css"] = { "prettier" },
+        ["scss"] = { "prettier" },
+        ["less"] = { "prettier" },
+        ["html"] = { "prettier" },
+        ["json"] = { "prettier" },
+        ["jsonc"] = { "prettier" },
+        ["yaml"] = { "prettier" },
+        ["markdown"] = { "prettier" },
+        ["markdown.mdx"] = { "prettier" },
+        ["graphql"] = { "prettier" },
+        ["handlebars"] = { "prettier" },
+      },
+      formatters = {
+        prettier = {
+          command = "prettier",
+          args = {
+            "--print-width",
+            "150",
+            "--stdin-filepath",
+            "$FILENAME",
+          },
         },
       },
-  },
-  vim.filetype.add({
-    pattern = {
-        [".*%.blade%.php"] = "blade",
     },
-})
+  },
 }

@@ -56,6 +56,7 @@ return {
       "glimmer",
       "handlebars",
       "hbs",
+      "blade",
     },
     opts = {
       enable = true,
@@ -76,6 +77,7 @@ return {
         "glimmer",
         "handlebars",
         "hbs",
+        "blade",
       },
     },
   },

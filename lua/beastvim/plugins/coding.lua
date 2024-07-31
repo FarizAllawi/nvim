@@ -63,8 +63,8 @@ return {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          -- ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          -- ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
           ["<Esc>"] = cmp.mapping(function(fallback)
             require("luasnip").unlink_current()
             fallback()
@@ -74,7 +74,7 @@ return {
           { name = "codeium", keyword_length = 2 },
           -- { name = "copilot", keyword_length = 2 },
           { name = "nvim_lsp", keyword_length = 3 },
-          { name = "luasnip", keyword_length = 2 },
+          { name = "luasnip", keyword_length = 3 },
           { name = "buffer", keyword_length = 3 },
           { name = "path" },
         }),

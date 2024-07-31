@@ -91,7 +91,7 @@ return {
 
       vim.api.nvim_create_autocmd(opts.events, {
         group = Utils.augroup("nvim-lint"),
-        callback = M.debounce(100, M.lint),
+        callback = M.debounce(300, M.lint),
       })
     end,
   },

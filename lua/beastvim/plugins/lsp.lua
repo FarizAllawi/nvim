@@ -11,6 +11,18 @@ return {
     },
     ---@type LspOptions
     opts = {
+
+      inlay_hints = { enabled = true },
+      on_attach = function(client, bufnr)
+        if client.server_capabilities.documentFormattingProvider then
+          vim.cmd([[
+                    augroup LspFormatting
+                        autocmd! * <buffer>
+                        autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ timeout_ms = 2000 })
+                    augroup END
+                ]])
+        end
+      end,
       servers = {
         html = {},
         lua_ls = {

@@ -4,7 +4,7 @@
 ---@field version? string
 ---@field license? string
 local M = {
-  name = "BeastVim",
+  name = "BIGMAN",
 }
 M = setmetatable({}, { __index = M })
 

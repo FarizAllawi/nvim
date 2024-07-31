@@ -22,14 +22,14 @@ require("lazy").setup({
     { import = "beastvim.features.lsp.lang.docker", enabled = true },
     { import = "beastvim.features.lsp.lang.dotnet", enabled = false },
     { import = "beastvim.features.lsp.lang.tailwind", enabled = true },
-    { import = "beastvim.features.lsp.lang.dot", enabled = false },
+    { import = "beastvim.features.lsp.lang.dot", enabled = true },
   },
   defaults = {
     lazy = true,
     -- version = false, -- always use the latest git commit
     version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "monokai-pro", "habamax" } },
+  install = { colorscheme = { "rose-pine", "monokai-pro", "habamax", "catppuccin" } },
   checker = { enabled = false, notify = false },
   change_detection = {
     -- automatically check for config file changes and reload the ui
@@ -78,3 +78,19 @@ require("lazy").setup({
     },
   },
 })
+
+-- -- Ensure prettier is used for jsx and tsx files
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "javascriptreact", "typescriptreact" },
+--   callback = function()
+--     vim.b.formatter = "prettier"
+--   end,
+-- })
+
+-- Ensure blade-formatter is only applied to blade files
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "blade",
+--   callback = function()
+--     vim.b.formatter = "blade_formatter"
+--   end,
+-- })
