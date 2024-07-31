@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 local M = {}
 
 function M.bootstrap()
@@ -6,7 +5,3 @@ function M.bootstrap()
   require("beastvim.lazy")
 end
 return M
-=======
-local beast = require("beastvim")
-beast.bootstrap()
->>>>>>> Stashed changes
