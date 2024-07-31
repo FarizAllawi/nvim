@@ -67,6 +67,8 @@ map("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 map({ "n", "i", "v" }, "<C-U>", "<C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>")
 map({ "n", "i", "v" }, "<C-D>", "<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>")
+map({"n", "i", "v"}, "<C-U>", "<C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>")
+map({"n", "i", "v"}, "<C-D>", "<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>")
 
 ------------------ Fuzzy Search --------------------------------
 vim.keymap.set("n", "<C-f>", function()

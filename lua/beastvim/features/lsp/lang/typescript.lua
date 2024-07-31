@@ -10,7 +10,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "typescript", "tsx", "javascript", "jsx", "vue" })
+        vim.list_extend(opts.ensure_installed, { "typescript", "tsx", "javascript", "vue" })
       end
     end,
   },
@@ -19,22 +19,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        tsserver = {
-          -- keys = {
-          --   {
-          --     "<leader>lo",
-          --     function()
-          --       vim.lsp.buf.code_action({
-          --         apply = true,
-          --         context = {
-          --           only = { "source.organizeImports.ts" },
-          --           diagnostics = {},
-          --         },
-          --       })
-          --     end,
-          --     desc = "Organize Imports",
-          --   },
-          -- },
+        tsserver = {  
           settings = {
             root_dir = function(...)
               return require("lspconfig.util").root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git")(
@@ -42,6 +27,22 @@ return {
               )
             end,
             single_file_support = false,
+          keys = {
+            {
+              "<leader>lo",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.organizeImports.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Organize Imports",
+            },
+          },
+          settings = {
             diagnostics = { ignoredCodes = { 6133 } },
             completions = {
               completeFunctionCalls = true,
@@ -72,6 +73,7 @@ return {
         },
         eslint = {
           settings = {
+            -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
             workingDirectory = { mode = "auto" },
           },
         },
@@ -108,8 +110,6 @@ return {
         ["javascriptreact"] = { "prettier" },
         ["typescript"] = { "prettier" },
         ["typescriptreact"] = { "prettier" },
-        ["tsx"] = { "prettier" },
-        ["jsx"] = { "prettier" },
         ["vue"] = { "prettier" },
         ["css"] = { "prettier" },
         ["scss"] = { "prettier" },
@@ -122,7 +122,6 @@ return {
         ["markdown.mdx"] = { "prettier" },
         ["graphql"] = { "prettier" },
         ["handlebars"] = { "prettier" },
-        ["blade"] = { "blade-formatter" }, -- Add blade-formatter for blade files only
       },
       formatters = {
         prettier = {

@@ -14,7 +14,7 @@ return {
   },
   keys = {
     {
-      "<leader>w",
+      "<leader>W",
       function()
         local cf = require("conform")
         cf.format({ async = false, lsp_fallback = true })

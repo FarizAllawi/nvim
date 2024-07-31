@@ -204,7 +204,7 @@ return {
       plugins = {
         bufferline = {
           underline_selected = true,
-          underline_visible = true,
+          underline_visible = false,
           underline_fill = true,
           bold = false,
         },
@@ -215,7 +215,7 @@ return {
       },
       override = function(c)
         return {
-          ColorColumn = { bg = c.editor.background },
+          -- ColorColumn = { bg = c.editor.background },
           -- Mine
           DashboardRecent = { fg = c.base.magenta },
           DashboardProject = { fg = c.base.blue },
@@ -235,25 +235,25 @@ return {
         }
       end,
       overridePalette = function(filter)
-        if filter == "pro" then
-          return {
-            dark2 = "#101014",
-            dark1 = "#16161E",
-            background = "#1A1B26",
-            text = "#C0CAF5",
-            accent1 = "#f7768e",
-            accent2 = "#7aa2f7",
-            accent3 = "#e0af68",
-            accent4 = "#9ece6a",
-            accent5 = "#0DB9D7",
-            accent6 = "#9d7cd8",
-            dimmed1 = "#737aa2",
-            dimmed2 = "#787c99",
-            dimmed3 = "#363b54",
-            dimmed4 = "#363b54",
-            dimmed5 = "#16161e",
-          }
-        end
+        -- if filter == "pro" then
+        --   return {
+        --     dark2 = "#101014",
+        --     dark1 = "#16161E",
+        --     background = "#1A1B26",
+        --     text = "#C0CAF5",
+        --     accent1 = "#f7768e",
+        --     accent2 = "#7aa2f7",
+        --     accent3 = "#e0af68",
+        --     accent4 = "#9ece6a",
+        --     accent5 = "#0DB9D7",
+        --     accent6 = "#9d7cd8",
+        --     dimmed1 = "#737aa2",
+        --     dimmed2 = "#787c99",
+        --     dimmed3 = "#363b54",
+        --     dimmed4 = "#363b54",
+        --     dimmed5 = "#16161e",
+        --   }
+        -- end
       end,
     },
     config = function(_, opts)
